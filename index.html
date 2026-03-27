@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://i.imgur.com/8Km9tLL.jpg"></script>
+  <script src="https://i.imgur.com/5NZ6f4T.jpg"></script>
+</head>
+
+<body style="margin: 0; overflow: hidden;">
+<a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+
+  <a-assets>
+    <!-- BEFORE image -->
+    <img id="before" src="https://i.imgur.com/8Km9tLL.jpg">
+    
+    <!-- AFTER image -->
+    <img id="after" src="https://i.imgur.com/5NZ6f4T.jpg">
+  </a-assets>
+
+  <a-marker preset="hiro">
+
+    <!-- BEFORE IMAGE -->
+    <a-plane id="beforeImg"
+      src="#before"
+      width="2"
+      height="1.2"
+      position="0 0 0">
+    </a-plane>
+
+    <!-- AFTER IMAGE (hidden initially) -->
+    <a-plane id="afterImg"
+      src="#after"
+      width="2"
+      height="1.2"
+      position="0 0 0"
+      visible="false">
+    </a-plane>
+
+  </a-marker>
+
+  <a-entity camera></a-entity>
+
+</a-scene>
+
+<script>
+  setTimeout(() => {
+    document.querySelector("#beforeImg").setAttribute("visible", "false");
+    document.querySelector("#afterImg").setAttribute("visible", "true");
+  }, 4000);
+</script>
+
+</body>
+</html>
